@@ -93,7 +93,7 @@ class ChatMessage extends StatelessWidget {
             builder: (context) {
               return new Expanded(
             child: new Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[
                 //new Text(_name, style: Theme.of(context).textTheme.subhead),
                 new Container(
@@ -120,7 +120,7 @@ class ChatMessage extends StatelessWidget {
             builder: (context) {
               return new Expanded(
             child: new Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 //new Text(_name, style: Theme.of(context).textTheme.subhead),
                 new Container(
