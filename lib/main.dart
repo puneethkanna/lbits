@@ -1,6 +1,8 @@
 
 import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/material.dart';
+import 'dart:math';
+Random random = new Random();
 
 void main() {
   runApp(new FriendlychatApp());
@@ -89,7 +91,7 @@ class ChatMessage extends StatelessWidget {
               child: new CircleAvatar(child: new Text(_name[0])),
             ),*/
             ConditionalBuilder(
-            condition: sent == true,
+            condition: sent == 0,
             builder: (context) {
               return new Expanded(
             child: new Column(
@@ -116,7 +118,7 @@ class ChatMessage extends StatelessWidget {
           },
           ),
           ConditionalBuilder(
-            condition: sent == false,
+            condition: sent == 1,
             builder: (context) {
               return new Expanded(
             child: new Column(
@@ -263,12 +265,15 @@ Widget _buildTextComposer() {
 }
 void _handleSubmitted(String text) {
   _textController.clear();
+  int randomNumber;
+  randomNumber = random.nextInt(2);
   ChatMessage message = new ChatMessage(
     text: text,
     animationController: new AnimationController(
       duration: new Duration(milliseconds: 700), 
       vsync: this,                               
     ),
+    sent: randomNumber,
   );
   /*ChatMessage1 message1 = new ChatMessage1(
     text1: text,
