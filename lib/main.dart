@@ -1,7 +1,9 @@
-
 import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'package:intl/intl.dart';
+//import 'assets:
+    //- assets/images/puneeth.jpgpackage:intl/intl_browser.dart';
 Random random = new Random();
 
 void main() {
@@ -12,6 +14,9 @@ class FriendlychatApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
+      theme: ThemeData(
+      primaryColor: Color(0xFF4267B2),
+      ),
       title: "Friendlychat",
       home: new Scaffold(
         appBar: chatAppBar(),
@@ -25,6 +30,13 @@ class FriendlychatApp extends StatelessWidget {
   title:Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
+                new Container(
+                //margin: new EdgeInsets.symmetric(horizontal: 4.0),
+                child: new IconButton(
+                  icon: new Icon(Icons.arrow_back_ios, color: Colors.white70),                                //new
+                  //onPressed: () => _handleSubmitted(_textController.text)),
+                       ),
+                   ),
                 ClipOval(
                   child: Image.asset(
                     "assets/images/puneeth.jpg",
@@ -67,13 +79,14 @@ class ChatScreen extends StatefulWidget {
   @override                                                        
   State createState() => new ChatScreenState();                    
 } 
-
+DateTime now = DateTime.now();
 // Add the ChatScreenState class definition in main.dart.
 class ChatMessage extends StatelessWidget {
   ChatMessage({this.text, this.animationController, this.sent,});         
   final String text;
   final AnimationController animationController;
-  final sent;
+  final sent; 
+  String formattedDate = DateFormat('kk:mm').format(now);
   //double width = MediaQuery.of(context).size.width;                  
   @override
   Widget build(BuildContext context) {
@@ -82,7 +95,7 @@ class ChatMessage extends StatelessWidget {
         parent: animationController, curve: Curves.easeOut),
     axisAlignment: 0.0,                                           
     child: new Container(                                    
-      margin: const EdgeInsets.symmetric(vertical: 10.0),
+      margin: const EdgeInsets.symmetric(vertical: 7.0),
       child: new Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -96,22 +109,51 @@ class ChatMessage extends StatelessWidget {
               return new Expanded(
             child: new Column(
               crossAxisAlignment: CrossAxisAlignment.end,
+              //mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 //new Text(_name, style: Theme.of(context).textTheme.subhead),
                 new Container(
-                  width: MediaQuery.of(context).size.width * 0.50,
+                  width: MediaQuery.of(context).size.width * 0.52,
                   child: Card(
-                  color: Colors.grey[200],
+                  color: Color(0xFF4267B2),
                   child: Column(
                   mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                   new Container(
                   margin: const EdgeInsets.only(bottom: 10.0),
-                  padding: new EdgeInsets.fromLTRB(5, 5, 5, 5),
-                  child: new Text(text, textAlign: TextAlign.left,),
+                  padding: new EdgeInsets.fromLTRB(5, 5, 5, 0),
+                  child: new Text(text,
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                    color: Colors.white,
                   ),
-                  ]))
+                  ),
+                  ),
+                  new Container(
+                  //margin: const EdgeInsets.symmetric(horizontal:),
+                  //padding: new EdgeInsets.fromLTRB(5, 5, 5, 5),
+                  child:
+                  new Row(
+                   mainAxisAlignment: MainAxisAlignment.end,
+                   children: <Widget>[
+                   new Container(
+                      child:Text(
+                  formattedDate,
+                  textAlign: TextAlign.end,
+                  style: TextStyle(
+                    color:Colors.white70,
+                    fontSize: 11,
+                    
+                  ),
                 ),
+                   ),
+                  ],),
+                  )
+                  ],
+                  )),
+                ),
+                
               ],
             ),
           );
@@ -123,81 +165,58 @@ class ChatMessage extends StatelessWidget {
               return new Expanded(
             child: new Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              //mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 //new Text(_name, style: Theme.of(context).textTheme.subhead),
                 new Container(
-                  width: MediaQuery.of(context).size.width * 0.50,
+                  width: MediaQuery.of(context).size.width * 0.52,
                   child: Card(
                   color: Colors.grey[200],
                   child: Column(
                   mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                   new Container(
                   margin: const EdgeInsets.only(bottom: 10.0),
-                  padding: new EdgeInsets.fromLTRB(5, 5, 5, 5),
-                  child: new Text(text, textAlign: TextAlign.left,),
+                  padding: new EdgeInsets.fromLTRB(5, 5, 5, 0),
+                  child: new Text(text, textAlign: TextAlign.start,),
                   ),
-                  ]))
+                  new Container(
+                  //margin: const EdgeInsets.symmetric(horizontal:),
+                  //padding: new EdgeInsets.fromLTRB(5, 5, 5, 5),
+                  child:
+                  new Row(
+                   mainAxisAlignment: MainAxisAlignment.end,
+                   children: <Widget>[
+                   new Container(
+                      child:Text(
+                  formattedDate,
+                  textAlign: TextAlign.end,
+                  style: TextStyle(
+                    color:Colors.grey[400],
+                    fontSize: 11,
+                    
+                  ),
                 ),
+                   ),
+                  ],),
+                  )
+                  ],
+                  )),
+                ),
+                
               ],
             ),
           );
           },
-          )
-          ],
-        ),
-      ),
-    );
-  }
-}
-/*class ChatMessage1 extends StatelessWidget {
-  ChatMessage1({this.text1, this.animationController1});         
-  final String text1;
-  final AnimationController animationController1;
-  //double width = MediaQuery.of(context).size.width;                  
-  @override
-  Widget build(BuildContext context) {
-    return new SizeTransition(
-    sizeFactor: new CurvedAnimation(
-        parent: animationController1, curve: Curves.easeOut),
-    axisAlignment: 0.0, 
-    child: new Container(      
-      margin: const EdgeInsets.symmetric(vertical: .0),
-      child: new Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            /*new Container(
-              margin: const EdgeInsets.only(right:10.0),
-              child: new CircleAvatar(child: new Text(_name[0])),
-            ),*/
-            new Expanded(
-            child: new Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: <Widget>[
-                //new Text(_name, style: Theme.of(context).textTheme.subhead),
-                new Container(
-                  width: MediaQuery.of(context).size.width * 0.50,
-                  child: Card(
-                  color: Colors.grey[200],
-                  child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                  new Container(
-                  margin: const EdgeInsets.only(bottom: 10.0),
-                  padding: new EdgeInsets.fromLTRB(5, 5, 5, 5),
-                  child: new Text(text1, textAlign: TextAlign.left,),
-                  ),
-                  ]))
-                ),
-              ],
-            ),
           ),
           ],
         ),
       ),
     );
   }
-}*/
+}
+
 class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin { 
   final List<ChatMessage> _messages = <ChatMessage>[];
   //final List<ChatMessage1> _messages1 = <ChatMessage1>[];       
@@ -230,6 +249,7 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
 Widget _buildTextComposer() {
   return new Container(
     color: Colors.grey[200],
+    height: 55,
     //margin: const EdgeInsets.symmetric(horizontal: 8.0),
     child: new Row(
       children: <Widget>[
@@ -239,15 +259,15 @@ Widget _buildTextComposer() {
             icon: new Icon(Icons.add, color: Colors.grey[600],),                                //new
             onPressed: () => _handleSubmitted(_textController.text)),
         ),
-        new Flexible(
+        new Expanded(
           child: new TextField(
-          scrollPadding: EdgeInsets.fromLTRB(0, 2, 0, 2),
+          scrollPadding: EdgeInsets.fromLTRB(0, 20, 0, 10),
             controller: _textController,
             onSubmitted: _handleSubmitted,
-            decoration: new InputDecoration.collapsed(
+            decoration: new InputDecoration(
               hintText: "Send a message",
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(23.9)),
+                borderRadius: BorderRadius.all(Radius.circular(30)),
                 borderSide: const BorderSide(color: Colors.white, width: 10.0),
                 ),
               ),
