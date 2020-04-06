@@ -39,7 +39,8 @@ import 'package:flutter/rendering.dart';
         ),
         home: Scaffold(
           appBar: filtersAppBar(),
-          body: Padding(
+          body: SingleChildScrollView(
+          child: Padding(
             padding: EdgeInsets.fromLTRB(15, 25, 15, 15),
               child: Column(
                 //mainAxisAlignment: MainAxisAlignment.start,
@@ -231,7 +232,8 @@ import 'package:flutter/rendering.dart';
                   ]),
                   ),
               )
-          );
+          )
+      );
     }
   Widget filtersAppBar() {
   return new AppBar(
