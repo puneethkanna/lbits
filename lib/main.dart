@@ -12,17 +12,8 @@ import 'package:flutter/rendering.dart';
       return _FiltersAppState();
     }
   } 
-	List<String> selectedChoices = List();
-    List<String> reportList = [
-    "Not relevant",
-    "Illegal",
-    "Spam",
-    "Offensive",
-    "Uncivil"
-    ];
-     var data = ['Google', 'Microsoft', 'Apple'];
-  var selected = [];
-    List<Widget> choices = List();
+
+  List<Widget> choices = List();
   class _FiltersAppState extends State {
     var _value = RangeValues(18, 27);
     bool goal_cricket = false;
@@ -77,53 +68,7 @@ import 'package:flutter/rendering.dart';
                     ]),
                     Container(
                     margin: EdgeInsets.all(10),
-
                     ),
-                    /*------Gender---------*/
-                    Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children:[
-                        new Text("Show Me"),
-                        ],
-                      ),
-                      Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        new Radio(
-                          value: 0,
-                          groupValue: _checkValue,
-                          onChanged: _handleRadioValueChange1,
-                        ),
-                        new Text(
-                          'Both',
-                          style: new TextStyle(fontSize: 16.0),
-                        ),
-                        new Radio(
-                          value: 1,
-                          groupValue: _checkValue,
-                          onChanged: _handleRadioValueChange1,
-                        ),
-                        new Text(
-                          'Male',
-                          style: new TextStyle(
-                            fontSize: 16.0,
-                          ),
-                        ),
-                        new Radio(
-                          value: 2,
-                          groupValue: _checkValue,
-                          onChanged: _handleRadioValueChange1,
-                        ),
-                        new Text(
-                          'Female',
-                          style: new TextStyle(fontSize: 16.0),
-                        ),
-                      ],
-                    ),
-                    ]),
                     Container(
                     margin: EdgeInsets.all(10),
                     ),//This container is for giving space between the widgets.
@@ -170,64 +115,86 @@ import 'package:flutter/rendering.dart';
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children:[
-                        new Text("Show Me"),
+                        new Text("Show me people with goals\n"),
                         ],
                       ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children:<Widget>[
-                    
-                     new Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                      RawChip(
-                        label: Text('Cricket'),
-                        backgroundColor: Colors.black12,
-                        avatarBorder: CircleBorder(),
-                        selected: goal_cricket,
-                        selectedColor: Colors.blueAccent,
-                        onSelected: (bool isSelected) {
-                        setState(() {
-                            goal_cricket = isSelected;
-                          });
-                        },
-                        showCheckmark: false,
+                      children:<Widget>[
+                        Container(
+                          //padding: const EdgeInsets.all(8.2),
+                          padding: const EdgeInsets.fromLTRB(8.2, 7, 8.2, 7),
+                          child:Material(
+                            color: goal_cricket? Colors.blueAccent:Colors.white,
+                          child:InkWell(
+                            //padding: const EdgeInsets.fromLTRB(0,0,0,0),
+                            child: Text("Cricket",
+                            style: TextStyle(
+                             color: goal_cricket? Colors.white:Colors.blueAccent,
+                            fontSize: 14,
+                            ),),
+                            onTap: () {
+                              setState(() {
+                                goal_cricket = !goal_cricket;
+                              });
+                            },
+                          ),),
+                          decoration: BoxDecoration(
+                            border: Border.all(color:Colors.blueAccent),
+                            color: goal_cricket?Colors.blueAccent:Colors.white,
+                            borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                          ),
                         ),
-                      new Container(
-                        margin: EdgeInsets.only(right:5),
-                      ),
-                      RawChip(
-                        label: Text('Football'),
-                        backgroundColor: Colors.black12,
-                        selected: goal_football,
-                        selectedColor: Colors.blueAccent,
-                        onSelected: (bool isSelected) {
-                          setState(() {
-                            goal_football = isSelected;
-                          });
-                        },
-                         showCheckmark: false,
-                       ),
-                      new Container(
-                        margin: EdgeInsets.only(right:5),
-                      ),
-                      RawChip(
-                       label: Text('Basketball'),
-                       backgroundColor: Colors.black12,
-                       selected: goal_basketball,
-                       selectedColor: Colors.blueAccent,
-                       onSelected: (bool isSelected) {
-                         setState(() {
-                           goal_basketball = isSelected;
-                         });
-                       },
-                       showCheckmark: false,
-                       ),
-                       new Container(
-                        margin: EdgeInsets.only(right:5),
-                      ),
-                     ]),
-                    ]),
+                        Container(
+                          //padding: const EdgeInsets.all(8.2),
+                          padding: const EdgeInsets.fromLTRB(8.2, 7, 8.2, 7),
+                          child:Material(
+                            color: goal_football? Colors.blueAccent:Colors.white,
+                          child:InkWell(
+                            //padding: const EdgeInsets.fromLTRB(0,0,0,0),
+                            child: Text("Football",
+                            style: TextStyle(
+                            color: goal_football? Colors.white:Colors.blueAccent,
+                            fontSize: 14,
+                            ),),
+                            onTap:() {
+                              setState(() {
+                                goal_football = !goal_football;
+                              });
+                            }
+                          ),),
+                          decoration: BoxDecoration(
+                            border: Border.all(color:Colors.blueAccent),
+                            color: goal_football?Colors.blueAccent:Colors.white,
+                            borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                          ),
+                        ),
+                        Container(
+                          //padding: const EdgeInsets.all(8.2),
+                          padding: const EdgeInsets.fromLTRB(8.2, 7, 8.2, 7),
+                          child:Material(
+                            color: goal_basketball? Colors.blueAccent:Colors.white,
+                          child:InkWell(
+                            //padding: const EdgeInsets.fromLTRB(0,0,0,0),
+                            child: Text("Basketball",
+                            style: TextStyle(
+                            color: goal_basketball? Colors.white:Colors.blueAccent,
+                            fontSize: 14,
+                            ),),
+                            onTap: () {
+                              setState(() {
+                                goal_basketball = !goal_basketball;
+                              });
+
+                            },
+                          ),),
+                          decoration: BoxDecoration(
+                            border: Border.all(color:Colors.blueAccent),
+                            color: goal_basketball?Colors.blueAccent:Colors.white,
+                            borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                          ),
+                        ),
+                      ]),
                    ]),
                   ]),
                   ),
@@ -240,27 +207,17 @@ import 'package:flutter/rendering.dart';
              title:Row(
                    mainAxisAlignment: MainAxisAlignment.center,
                    children: [
-                   Column(
-                     children: <Widget>[
-                       Row(
-                       children: [
-                         Container(
-                           margin: EdgeInsets.all(5),
-                           child:new Text("Filters",
-                           style: TextStyle(
-                             fontSize: 20,
-                             color: Colors.black,
-                           ),
-                          ),
-                        ),
-                       ],
+                    Expanded(
+                      flex: 1,
+                      child:Center(
+                       child:new Text("Filters",
+                       style: TextStyle(
+                       fontSize: 20,
+                       color: Colors.black,
+                      ),
                      ),
-                    ],
-                  ),
-                 Row(
-                   mainAxisAlignment: MainAxisAlignment.end,
-                   crossAxisAlignment: CrossAxisAlignment.end,
-                       children: [
+                     ),
+                    ),
                   new Container(
                 //margin: new EdgeInsets.symmetric(horizontal: 4.0),
                 child: new IconButton(
@@ -268,20 +225,19 @@ import 'package:flutter/rendering.dart';
                   //onPressed: () => _handleSubmitted(_textController.text)),
                        ),
                    ),
-                       ]),
                 ],
               ),
             );
       }
-     void _handleRadioValueChange1(int value) {
-    setState(() {
+    void _handleRadioValueChange1(int value) {
+      setState(() {
       _checkValue = value;
-    });
-  }
-  void onSelectionChanged(selectedList) {
-        setState(() {
-            //selectedReportList = selectedList;
-            print("hwy");
-        });
+      });
+    }
+    void onSelectionChanged(selectedList) {
+      setState(() {
+          //selectedReportList = selectedList;
+          print("hwy");
+      });
     }
   }
