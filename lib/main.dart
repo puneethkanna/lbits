@@ -16,9 +16,9 @@ import 'package:flutter/rendering.dart';
   List<Widget> choices = List();
   class _FiltersAppState extends State {
     var _value = RangeValues(18, 27);
-    bool goal_cricket = false;
+    bool goal_cricket = true;
     bool goal_basketball = false;
-    bool goal_football = false;
+    bool goal_football = true;
     int _checkValue = 0;
     int _distance = 30;
     @override
